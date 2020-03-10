@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="opciones">
+        <item>Selecciona una clasificación</item>
+        <item>Neurocirugia</item>
+        <item>Traumas</item>
+        <item>Cardiologia</item>
+        <item>Cirugia general</item>
+    </string-array>
+    <string-array name="sx">
+        <item>Selecciona un genero</item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+    <string-array name="o0">
+        <item>No se ha seleccionado un area </item>
+    </string-array>
+    <string-array name="o1">
+        <item>Elija un doctor</item>
+        <item>Dr. Perez</item>
+        <item>Dra. Villalva</item>
+        <item>Dr. Garcia</item>
+    </string-array>
+    <string-array name="o2">
+        <item>Elija un doctor</item>
+        <item>Dr. Camacho</item>
+        <item>Dr. Vazquez</item>
+        <item>Dr. Lopez</item>
+    </string-array>
+    <string-array name="o3">
+        <item>Elija un doctor</item>
+        <item>Dr. Perdomo</item>
+        <item>Dr. Gonzalez</item>
+        <item>Dra. Hernandez</item>
+    </string-array>
+    <string-array name="o4">
+        <item>Elija un doctor</item>
+        <item>Dra. Castro</item>
+        <item>Dra. BAz</item>
+        <item>Dr. Pulido</item>
+    </string-array>
+</resources>
