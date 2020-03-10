@@ -353,6 +353,7 @@ public class EditarFragment extends Fragment {
     }
 
     private void configureBtnModificar(){
+
         //Modificar registro
         btn_modificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -363,8 +364,9 @@ public class EditarFragment extends Fragment {
                         !et_estatura.getText().toString().equals("") &&
                         !et_peso.getText().toString().equals("") &&
                         !et_fecha.getText().toString().equals("") &&
-                        !strArea.equals("") &&
-                        !strDoctor.equals("") &&
+                        !sp_area.equals("") &&
+                        sp_doctor.getSelectedItemPosition()!=0 &&
+                        !strSexo.equals("") &&
                         !pathImage.equals("")) {
                     //dentro de if
                     Toast.makeText(getContext(), strArea + " " + strDoctor + " " +
@@ -469,11 +471,12 @@ public class EditarFragment extends Fragment {
                         if(posArea!=-1){
                             sp_area.setSelection(posArea);
                         }
+                        System.out.println(g4);
                         int posSexo= buscarPosicion(R.array.sx,g4);
+                        System.out.println(posSexo);
                         if(posSexo!=-1) {
                             sp_sexo.setSelection(posSexo);
                         }
-
                     } else
                         Toast.makeText(getContext(), "Error: No existe ese ID" +
                                 "", Toast.LENGTH_SHORT).show();

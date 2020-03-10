@@ -258,9 +258,9 @@ public class NuevoPacienteFragment extends Fragment {
                 int op = Integer.parseInt(opcion);
                 System.out.println(opcion);
                 if (op == 1){
-                    strSexo = "MACULINO";
+                    strSexo = "Masculino";
                 }else if (op == 2){
-                    strSexo = "FEMENINO";
+                    strSexo = "Femenino";
                 }
             }
             //Fin spinner sexo
@@ -348,6 +348,7 @@ public class NuevoPacienteFragment extends Fragment {
                         !et_fecha.getText().toString().equals("") &&
                         !strArea.equals("") &&
                         !strDoctor.equals("")&&
+                        !strSexo.equals("") &&
                         !pathImage.equals("")){
                         //dentro de if
                         Toast.makeText(getContext(), strArea+" "+strDoctor+" "+
