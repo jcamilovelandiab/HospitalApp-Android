@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -33,7 +34,9 @@ import com.example.appfragments.SQL.SQLite;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -120,20 +123,23 @@ public class EditarFragment extends Fragment {
                 System.out.println(opcion);
                 if (op==0){
                 }else if (op ==1){
+                    strArea = areaAdapter.getItem(1).toString();
                     final ArrayAdapter<CharSequence> doctorAdapter =
                             ArrayAdapter.createFromResource(
                                     getContext(),
                                     R.array.o1,
                                     android.R.layout.simple_spinner_item);
-
                     sp_doctor.setAdapter(doctorAdapter);
-                    strArea = areaAdapter.getItem(1).toString();
+
+                    int doctorPos = buscarPosicion(R.array.o1, strDoctor);
+                    if(doctorPos!=-1) {
+                        sp_doctor.setSelection(doctorPos);
+                    }
                     sp_doctor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             String opcion = String.valueOf(sp_doctor.getSelectedItemId());
                             int op = Integer.parseInt(opcion);
-                            System.out.println(opcion);
                             if (op==0){
                             }else if (op==1){
                                 strDoctor=doctorAdapter.getItem(1).toString();
@@ -161,6 +167,12 @@ public class EditarFragment extends Fragment {
                                     android.R.layout.simple_spinner_item);
                     sp_doctor.setAdapter(doctorAdapter);
                     strArea = areaAdapter.getItem(2).toString(); //Clasificacion 2 - Aereos
+
+                    int doctorPos = buscarPosicion(R.array.o2, strDoctor);
+                    if(doctorPos!=-1) {
+                        sp_doctor.setSelection(doctorPos);
+                    }
+
                     sp_doctor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -186,6 +198,7 @@ public class EditarFragment extends Fragment {
 
                 }//Segunda selección
                 else if (op ==3){
+
                     final ArrayAdapter<CharSequence> doctorAdapter =
                             ArrayAdapter.createFromResource(
                                     getContext(),
@@ -194,6 +207,12 @@ public class EditarFragment extends Fragment {
 
                     sp_doctor.setAdapter(doctorAdapter);
                     strArea = areaAdapter.getItem(3).toString(); //Clasificacion 3 - Terrestres
+
+                    int doctorPos = buscarPosicion(R.array.o3, strDoctor);
+                    if(doctorPos!=-1) {
+                        sp_doctor.setSelection(doctorPos);
+                    }
+
                     sp_doctor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -227,6 +246,12 @@ public class EditarFragment extends Fragment {
 
                     sp_doctor.setAdapter(doctorAdapter);
                     strArea = areaAdapter.getItem(4).toString(); //Clasificacion 4 - Acuaticos
+
+                    int doctorPos = buscarPosicion(R.array.o4, strDoctor);
+                    if(doctorPos!=-1) {
+                        sp_doctor.setSelection(doctorPos);
+                    }
+
                     sp_doctor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -243,6 +268,7 @@ public class EditarFragment extends Fragment {
                             }else if(op==4){
                                 strDoctor=doctorAdapter.getItem(4).toString();
                             }
+
                             if(op!=0) Toast.makeText(getContext(),strArea+" "+strDoctor, Toast.LENGTH_SHORT).show();
                         }
                         @Override
@@ -469,14 +495,15 @@ public class EditarFragment extends Fragment {
                         cargarImagen();
                         int posArea=buscarPosicion(R.array.opciones,g1);
                         if(posArea!=-1){
+                            strDoctor = g2;
                             sp_area.setSelection(posArea);
                         }
-                        System.out.println(g4);
                         int posSexo= buscarPosicion(R.array.sx,g4);
                         System.out.println(posSexo);
                         if(posSexo!=-1) {
                             sp_sexo.setSelection(posSexo);
                         }
+
                     } else
                         Toast.makeText(getContext(), "Error: No existe ese ID" +
                                 "", Toast.LENGTH_SHORT).show();
